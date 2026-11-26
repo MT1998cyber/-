@@ -1,0 +1,39 @@
+# Region-level feature extraction (steps 6 and 7), NOT the voxel-wise clustering configuration.
+#
+# CHANGED vs. original:
+#   normalize: false  - see voxel_radiomics.yaml; whole-image z-scoring makes the HU bin
+#                       width patient-dependent. Keep raw HU for CT.
+#   binWidth: 5       - in HU (hematoma ~40-90 HU -> ~10-12 bins). Starting point.
+#
+# Thick-slice option (0.5 x 0.5 x 5 mm native grid):
+#   force2D computes texture matrices slice-by-slice (in-plane only); shape stays 3D.
+#   Uncomment both lines if you keep the native 5 mm grid, and use the same setting for
+#   every center / every run.
+setting:
+  binWidth: 5
+  normalize: false
+  correctMask: false
+  minimumROIDimensions: 2
+  preCrop: true
+  padDistance: 10
+  # force2D: true
+  # force2Ddimension: 0
+  # CT and habitat masks are already on the same grid. No second resampling.
+  resampledPixelSpacing:
+
+imageType:
+  Original: {}
+  Wavelet:
+    wavelet: coif1
+    level: 1
+  LoG:
+    sigma: [1.0, 2.0, 3.0]
+
+featureClass:
+  shape: []
+  firstorder: []
+  glcm: []
+  glrlm: []
+  glszm: []
+  gldm: []
+  ngtdm: []

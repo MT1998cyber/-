@@ -1,0 +1,33 @@
+# PyRadiomics voxel-wise SETTINGS for step 1.
+#
+# Which features are extracted is decided by VOXEL_FEATURE_SET in single_ct_utils.py
+# ("hu_entropy" = HU + JointEntropy, "paper19" = Table S2, "paper19_plus_hu").
+# The featureClass section below is overridden by step 1 and kept only for reference.
+#
+# CHANGED vs. original:
+#   normalize: False - PyRadiomics normalizes with the mean/SD of the WHOLE image
+#                      (air, skull, FOV included), so the HU bin width differed per patient.
+#   binWidth: 10     - now in HU. Hematoma ~40-90 HU -> ~5-6 bins in a 3x3x3 kernel.
+#                      With the 19 texture features you may try 5; keep it fixed once chosen.
+
+setting:
+  binWidth: 10
+  label: 1
+  interpolator:  # This is an enumerated value, here None is not allowed
+#  resampledPixelSpacing:  # no resampling; images are already 0.5 x 0.5 x 5.0 mm
+  weightingNorm:
+  correctMask: True
+  normalize: False
+
+voxelSetting:
+  kernelRadius: 1        # 3x3x3 voxels as in the paper (= 1.5 x 1.5 x 15 mm on your grid)
+  maskedKernel: True
+  initValue: nan
+  voxelBatch: 100
+
+imageType:
+  Original: {}
+
+featureClass:            # overridden by step 1 (see VOXEL_FEATURE_SET)
+  glcm:
+    - 'JointEntropy'
