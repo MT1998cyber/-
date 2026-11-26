@@ -1,4 +1,3 @@
-![Uploading image.png…]()
 
 # Hematoma habitat model - local research demo
 
