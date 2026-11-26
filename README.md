@@ -1,4 +1,4 @@
-![demo1](https://imgur.com/a/kzbPM1d)
+![demo1](./images/Figure.png)
 # Hematoma habitat model - local research demo
 
 Upload an anonymized non-contrast head CT (`.nii.gz`). The tool
