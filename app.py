@@ -97,7 +97,7 @@ def run(image, mask, all_folds, heatmaps, agreed):
 
 def build_ui():
     with gr.Blocks(title="Hematoma habitat model (research demo)") as demo:
-        gr.Markdown("# Hematoma habitat model - local research demo\n"
+        gr.Markdown("# HabiLens, Habitat-based hematoma expansion model\n"
                     "Upload an **anonymized** non-contrast head CT. The hematoma is segmented automatically, split into "
                     "habitats, and the habitat-based model estimates the risk of hematoma expansion; SHAP shows what drives "
                     "it. Everything runs on this computer.\n\n" + DISCLAIMER)
